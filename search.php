@@ -30,8 +30,8 @@
     }
 
     function handle_query($query) {
-        // connect to SQL server
-        $con = mysqli_connect('localhost','root','What spreads down from a tree.','pandora_real_estate');
+        // connect to SQL server (replace '$arg3' with personal password)
+        $con = mysqli_connect('localhost','root', $arg3,'pandora_real_estate');
         // if not connecting, then kill
 	    if(!$con) {
             die('Could not connect: '. mysqli_connect_error());
