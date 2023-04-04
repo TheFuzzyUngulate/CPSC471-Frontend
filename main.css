@@ -5,10 +5,10 @@
 }
 
 .primary-header {
-    background-color: white;
     position: fixed;
     width: 100%;
     height: 50px;
+    box-shadow: 0 2px 5px 0 rgb(200, 200, 200);
 }
 
 .gridblock {
@@ -49,7 +49,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: red;
 }
 
 .searchbar {
@@ -69,9 +68,9 @@
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     font-size: large;
-    background-color: #4654e1;
     border: none;
     height: 100%;
+    padding-left: 20px;
 }
 
 .main-searchbar-button {
@@ -79,14 +78,18 @@
     width: 10%;
     border: none;
     height: 100%;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
+    opacity: 0;
+    /* border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px; */
+    border-radius: 25px;
+    z-index: 2;
     
 }
 
 body {
     margin: 0;
     height: 100%;
+    background-color: rgb(240,240,240);
 }
 
 html {

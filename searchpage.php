@@ -10,9 +10,10 @@
                 <a href="/create-listing">Sell</a>
                 <a href="/contact-agent">Contact an Agent</a>
             </div>
-            <div class="gridblock mainpage-link center-elem">
-                <a href="/">Something Homes</a>
-            </div>
+            <form id="mainpage-searchbar-form" class="searchbar" action="searchpage.php">
+                <input type="text" class="main-searchbar-input" placeholder="search listings..." name="q">
+                <button class="main-searchbar-button" type="submit"></button>
+            </form>
             <div class="gridblock user-perms right-elem">
                 <button>Admin</button>
                 <button>Agent</button>
@@ -20,12 +21,11 @@
             </div>
         </nav>
     </div>
-
-    <div class="searchbarbox">
-        <form id="mainpage-searchbar-form" class="searchbar">
-            <input type="text" class="main-searchbar-input" placeholder="search listings...">
-            <button class="main-searchbar-button"></button>
-        </form>
-    </div>
 </body>
+<?php 
+    include 'search.php';
+    // here, we would expect to get functions from search.php
+    // these functions would allow us to parse the input given through the search bar
+    handle_query($_GET['q']);
+?>
 </html>
