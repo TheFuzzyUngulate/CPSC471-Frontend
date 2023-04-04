@@ -11,7 +11,7 @@
                 <a href="/contact-agent">Contact an Agent</a>
             </div>
             <div class="gridblock mainpage-link center-elem">
-                <a href="/">Something Homes</a>
+                <a href="/">Pandora Real Estate</a>
             </div>
             <div class="gridblock user-perms right-elem">
                 <button>Admin</button>
