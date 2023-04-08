@@ -66,6 +66,14 @@ ul.basic-info-list > li:after {
     text-align: center;
 }
 
+.listing-div-form {
+    text-align: right;
+}
+
+.listing-div-form > .listing-div-form-submit {
+    display: inline-block;
+}
+
 @media only screen and (min-width: 800px) {
     .listing-div {
         flex-direction: row;

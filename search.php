@@ -12,6 +12,9 @@
         // create a copy
         $db_addrs_copy = array();
 
+        //
+        if ($user_inpt == '') return;
+
         foreach ($db_addrs as $row) {
             // form an "address" string
             $addr_string = $row['Zip_code'] . ' ' . $row['House_num']
@@ -62,7 +65,7 @@
         $result = '';
         foreach ($arr as $item) {
             echo '
-                <div class="listing-div">
+                <div class="listing-div" onclick>
                     <div class="picture-container">
                         <img class="listing-pic" src="' . $item['Photos'] . '" onerror="this.onerror = null; this.src = \'images/default.jpg\'">
                     </div>
@@ -84,6 +87,10 @@
                                 condimentum magna lacinia
                             </p>
                         </div>
+                        <form action="/get-website.php" class="listing-div-form" method="post">
+                            <input type="hidden" name="json-value" value= "' . $item['Zip_code'] . '">
+                            <input type="submit" value="See more" class="listing-div-form-submit">
+                        </form>
                     </div>
                 </div>
             '; 

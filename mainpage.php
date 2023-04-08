@@ -11,22 +11,21 @@
                 <a href="/contact-agent">Contact an Agent</a>
             </div>
             <div class="gridblock mainpage-link center-elem">
-                <a href="/">Pandora Real Estate</a>
+                <a href="/home">Pandora Real Estate</a>
             </div>
             <div class="gridblock user-perms right-elem">
-                <button>Admin</button>
-                <button>Agent</button>
-                <button>User</button>
+                <a href="/admin-login">Admin</a>
+                <a href="/agent-login">Agent</a>
+                <a href="/login">User</a>
             </div>
         </nav>
     </div>
 
     <div class="searchbarbox">
-        <form id="mainpage-searchbar-form" class="searchbar" action="searchpage.php">
+        <form id="mainpage-searchbar-form" class="searchbar" action="/search">
             <input type="text" class="main-searchbar-input" placeholder="search listings..." name="q">
             <button class="main-searchbar-button" type="submit"></button>
         </form>
     </div>
 </body>
-<?php include 'database.php'?>
 </html>

@@ -8,7 +8,7 @@
     <div class="primary-header">
         <nav class="grid-container">
             <div class="gridblock header-seller-options left-elem">
-                <a href="./">Homepage</a>
+                <a href="/home">Homepage</a>
                 <a href="/create-listing">Sell</a>
                 <a href="/contact-agent">Contact an Agent</a>
             </div>
@@ -17,9 +17,9 @@
                 <button class="main-searchbar-button" type="submit"></button>
             </form>
             <div class="gridblock user-perms right-elem">
-                <button>Admin</button>
-                <button>Agent</button>
-                <button>User</button>
+                <a href="/admin-login">Admin</a>
+                <a href="/agent-login">Agent</a>
+                <a href="/login">User</a>
             </div>
         </nav>
     </div>
@@ -30,7 +30,8 @@
             include 'search.php';
             // here, we would expect to get functions from search.php
             // these functions would allow us to parse the input given through the search bar
-            create_res_objects(handle_query($_GET['q']));
+            if (isset($_GET['q']))
+                create_res_objects(handle_query($_GET['q']));
         ?>
         </div>
     </div>
