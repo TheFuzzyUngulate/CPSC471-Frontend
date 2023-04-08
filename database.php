@@ -8,7 +8,7 @@
 	//NOTE: Need to enter your web server password in 3rd argument for mysqli_connect()
 	//in order to connect to mysql database. Intructions for downloading 'appserv' which
 	//is a compatible web server with PHP and MySQL are in the PHP document on D2L
-	$con = mysqli_connect('localhost', 'root', '');
+	$con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.');
 
 	if(!$con) {
 		echo 'Connection did not work...';
@@ -26,7 +26,7 @@
 
 	//NOTE: Need to enter your web server password in 3rd argument for mysqli_connect()
 	//in order to connect to mysql database
-	$conn=mysqli_connect('localhost','root','','pandora_real_estate');
+	$conn=mysqli_connect('localhost','root','What spreads down from a tree.','pandora_real_estate');
 
 	//Check connection
 	if (mysqli_connect_errno($conn)) {

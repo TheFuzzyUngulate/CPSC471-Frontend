@@ -4,6 +4,8 @@
     // then, generate all houses
     // for all houses:
     // if each input token corresponds to one entry in the list generated
+    error_reporting(E_ALL);
+	ini_set("display_errors", 1);
 
     // check 
     function comp_input_w_addrs($user_inpt, $db_addrs) {
@@ -15,13 +17,12 @@
             $addr_string = $row['Zip_code'] . ' ' . $row['House_num']
                          . ' ' .  $row['Street'] . ' ' . $row['City']
                          . ' ' . $row['Province'] . ' ' . $row['Country'];
-            if (strpos($addr_string, $user_inpt) !== false) {
+            if (strpos(strtolower($addr_string), strtolower($user_inpt)) !== false) {
                 array_push($db_addrs_copy, $row);
             }
         }
 
         return $db_addrs_copy;
-
     }
 
     function parse_input($raw_input) {
@@ -30,8 +31,8 @@
     }
 
     function handle_query($query) {
-        // connect to SQL server (replace '$arg3' with personal password)
-        $con = mysqli_connect('localhost','root', $arg3,'pandora_real_estate');
+        // connect to SQL server
+        $con = mysqli_connect('localhost','root','What spreads down from a tree.','pandora_real_estate');
         // if not connecting, then kill
 	    if(!$con) {
             die('Could not connect: '. mysqli_connect_error());
@@ -52,5 +53,42 @@
 
         // for each string in house data, compare
         return json_encode(comp_input_w_addrs($query, $listing_array));
+    }
+
+    function create_res_objects($query) {
+        // create resultant objects in HTML file
+        // assume $query is a json encoded object
+        $arr = json_decode($query, true);
+        $result = '';
+        foreach ($arr as $item) {
+            echo '
+                <div class="listing-div">
+                    <div class="picture-container">
+                        <img class="listing-pic" src="' . $item['Photos'] . '" onerror="this.onerror = null; this.src = \'images/default.jpg\'">
+                    </div>
+                    <div class="info-container">
+                        <h1 class="price-tag">$' . $item['Price'] . '</h1>
+                        <p>' . $item['House_num'] . ' ' .  $item['Street']
+                             . ', ' . $item['City'] . ', ' . $item['Province'] . ', ' . $item['Country']
+                             . '; ' . $item['Zip_code'] . '</p>
+                        <ul class="basic-info-list">
+                            <li><span>' . $item['Num_of_bedrooms'] . '</span> bedrooms </li>
+                            <li><span>' . $item['Num_of_half_bathrooms'] . '</span> half bathrooms</li>
+                            <li><span>' . $item['Num_of_full_bathrooms'] . '</span> full bathrooms</li>
+                        </ul>
+                        <div class="description-container">
+                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Suspendisse tempus leo vel justo porttitor, non cursus lorem
+                                faucibus. Nam aliquet nulla lorem, ac venenatis quam 
+                                vestibulum quis. Phasellus ultricies dui a dui porta, maximus 
+                                condimentum magna lacinia
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            '; 
+        }
+
+        echo $result;
     }
 ?>
