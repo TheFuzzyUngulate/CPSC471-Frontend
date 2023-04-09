@@ -81,6 +81,38 @@ button:hover {
     overflow: hidden;
 }
 
+.sellpagebox {
+    width: 100%; 
+    height: 100%;
+    display: table;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.sellpageforms {
+    font-size: large;
+    display: table-cell;
+    text-align: center;
+    background: #fff;
+    padding: 2px;
+    border: 1px solid #fff;
+    vertical-align: middle;
+}
+
+.sellform {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 40px;
+    border-radius: 25px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+
 .main-searchbar-input {
     width: 90%;
     border-top-left-radius: 25px;
@@ -99,6 +131,16 @@ button:hover {
     opacity: 0;
     border-radius: 25px;
     z-index: 2;
+}
+
+.submit-sellform-button {
+    font-size: large;
+    width: 10%;
+    border: none;
+    height: 100%;
+    border-radius: 25px;
+    z-index: 2;
+    align-items: center;
 }
 
 body {
