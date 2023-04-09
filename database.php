@@ -115,7 +115,6 @@
 	Province VARCHAR(15),
 	Country VARCHAR(15),
 	Price DECIMAL(8,2),
-	Photos BLOB,
 	Num_of_bedrooms INT,
 	Num_of_half_bathrooms INT,
 	Num_of_full_bathrooms INT,
@@ -363,6 +362,20 @@
 	}
 	
 	// echo "Listing_Nearby_Schools table created successfully";
+	
+	$listingphotostable = 'CREATE TABLE IF NOT EXISTS Listing_Photos
+	(
+	Zip_code CHAR(6) NOT NULL,
+	Photo VARCHAR(100) NOT NULL,
+	CONSTRAINT Photos_PK PRIMARY KEY(Zip_code,Photo),
+	CONSTRAINT Photos_FK FOREIGN KEY(Zip_code) REFERENCES Listing(Zip_code) ON DELETE CASCADE ON UPDATE CASCADE
+	)';
+	
+	if(!mysqli_query($conn,$listingphotostable)) {
+		die('Could not create table: ' . mysqli_error($conn));
+	}
+		
+	// echo "Listing_Photos table created successfully";
 
 	$listingflooringtable = 'CREATE TABLE IF NOT EXISTS Listing_Flooring 
 	(
@@ -449,9 +462,7 @@
 
 	mysqli_close($conn);
 	mysqli_close($con);
-		
-	//https://www.youtube.com/watch?v=zYNAfEHGXAg
-	//
+	
 ?>
 </body>
 </html>
