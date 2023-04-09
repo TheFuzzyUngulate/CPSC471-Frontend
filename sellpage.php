@@ -11,7 +11,7 @@
 	//NOTE: Need to enter your web server password in 3rd argument for mysqli_connect()
 	//in order to connect to mysql database. Intructions for downloading 'appserv' which
 	//is a compatible web server with PHP and MySQL are in the PHP document on D2L
-	$con = mysqli_connect('localhost', 'root', 'tHisistheendd!!!&1');
+	$con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.');
 
 	if(!$con) {
 		echo 'Connection did not work...';
@@ -65,7 +65,7 @@
             </form>
         </div>
     </div>
-	// Access values of the form inputs using $_POST['{name}'] e.g., <?php echo $_POST['description'] ?>
-	// User must press submit before value is submitted, should check if value is empty/null before proceeding
+	<!-- Access values of the form inputs using $_POST['{name}'] e.g., <?php echo $_POST['description'] ?>
+	     User must press submit before value is submitted, should check if value is empty/null before proceeding -->
 </body>
 </html>

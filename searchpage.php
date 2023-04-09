@@ -30,7 +30,7 @@
             include 'search.php';
             // here, we would expect to get functions from search.php
             // these functions would allow us to parse the input given through the search bar
-            if (isset($_GET['q']))
+            if (isset($_GET['q']) && $_GET['q'] != '')
                 create_res_objects(handle_query($_GET['q']));
         ?>
         </div>
