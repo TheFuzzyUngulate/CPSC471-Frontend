@@ -2,9 +2,9 @@
 ## To-Do list (delete once done)
 
 ##### Back end
-- Create starter database [Y]
-- Handle query listing by address
-- Handle query listing by location (city, province, country)
+- Create starter database (Done?)
+- Handle query listing by address (Done)
+- Handle query listing by location (city, province, country) (Done)
 - Handling pending listings
 - Handling pending approved listings
 - Handle approved listing creation
@@ -16,15 +16,16 @@
 - Handle showing scheduling
 
 ##### Front end
-- Create main page
-- Add buy button
+- Create main page (Done)
+- Add buy button (Scrapped in favor of having search bar)
 	* Navigate to buy page
-	* Display search bar
-	* Search bar should support address and location check
-	* If valid listing found, should forward to search results page
+	* Display search bar (Done)
+	* Search bar should support address and location check (Done)
+	* Forward to search results page
+		* If listings found, then display all fitting listings
 		* Search results page contains information on the listing
-	* Else, return a message indicating that no listings were found
-- Create search results page
+		* Else, return a message indicating that no listings were found
+- Create search results page (Done)
 	* For each listing, get all attributes
 	* Add a "buy" button
 	* Add a "view images" button

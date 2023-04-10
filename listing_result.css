@@ -1,0 +1,85 @@
+.grid-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.listingdisplay-holder {
+    text-align: center;
+    position: relative;
+    top: 50px;
+    width: 100%;
+}
+
+.listingdisplay-body {
+    display: inline-block;
+    width: 70%;
+}
+
+.listingdisplay-body > table {
+    width: 100%;
+    border-top: 1px solid rgb(180, 180, 180);
+    border-bottom: 1px solid rgb(180, 180, 180);
+    border-collapse: collapse;
+}
+
+.listingdisplay-body > table > tbody {
+    padding: 10px;
+}
+
+.listingdisplay-body > table td {
+    border-left: 1px solid rgb(180, 180, 180);
+    border-right: 1px solid rgb(180, 180, 180);
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.listingdisplay-body > table td:first-child {
+    border-left: none;
+    border-right: none;
+}
+
+.listingdisplay-body > table td:last-child {
+    border-left: none;
+    border-right: none;
+}
+
+.listingdisplay-image-holder {
+    width: 100%;
+    height: 450px;
+    text-align: center;
+    background-color: rgb(220, 220, 220);
+}
+
+.listingdisplay-image-holder > img {
+    height: inherit;
+}
+
+.listingdisplay-body-header {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    padding: 10px;
+}
+
+.listingdisplay-body-header > .listingaddressinfo {
+    width: 80%;
+}
+
+.listingdisplay-body-header > .listingbuybutton {
+    width: 20%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.listingdisplay-body-header > .listingbuybutton > button {
+    display: block;
+    width: 30%;
+    margin: auto;
+}
+
+.listingdisplay-body-info-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
