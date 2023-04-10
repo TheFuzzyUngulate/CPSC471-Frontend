@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="mainWORKING.css">
+	<link rel="stylesheet" href="main.css">
 </head>
 <body>
 <?php
@@ -11,7 +11,7 @@
 	//NOTE: Need to enter your web server password in 3rd argument for mysqli_connect()
 	//in order to connect to mysql database. Intructions for downloading 'appserv' which
 	//is a compatible web server with PHP and MySQL are in the PHP document on D2L
-	$con = mysqli_connect('localhost', 'root', 'tHisistheendd!!!&1');
+	$con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.');
 
 	if(!$con) {
 		echo 'Connection did not work...';

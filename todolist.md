@@ -18,20 +18,20 @@
 ##### Front end
 - Create main page (Done)
 - Add buy button (Scrapped in favor of having search bar)
-	* Navigate to buy page
+	* Navigate to buy page (Done)
 	* Display search bar (Done)
 	* Search bar should support address and location check (Done)
-	* Forward to search results page
-		* If listings found, then display all fitting listings
-		* Search results page contains information on the listing
-		* Else, return a message indicating that no listings were found
+	* Forward to search results page (Done)
+		* If listings found, then display all fitting listings (Done)
+		* Search results page contains information on the listing (Done)
+		* Else, return a message indicating that no listings were found (Scrapped)
 - Create search results page (Done)
-	* For each listing, get all attributes
-	* Add a "buy" button
-	* Add a "view images" button
+	* For each listing, get all attributes (Done)
+	* Add a "buy" button (Done)
+	* Add a "view images" button (Scrapped)
 - Add sell button
-	* Navigate to sell page
-	* Ask for listing information
+	* Navigate to sell page (Done)
+	* Ask for listing information (Done)
 	* Receive given listing information
 		* Information should not go directly to a database, but to a pending listings document (JSON?)
 		* Admin can approve items herein, could tick a flag

@@ -4,7 +4,7 @@
 		
 		//Create connection
 		//Note: Insert your password in 3rd argument to connect
-		$con_id=mysqli_connect('localhost','root','','pandora_real_estate');
+		$con_id=mysqli_connect('localhost','root','What spreads down from a tree.','pandora_real_estate');
 		
 		//Check connection
 		if(mysqli_connect_errno($con_id)) {
@@ -46,7 +46,7 @@
 		if(!mysqli_query($con_id,$employee2)) {
 			die('Error: ' . mysqli_error($con_id));
 		} else {
-			echo "1 record added";
+			//echo "1 record added";
 		}
 		
 		$employee3 = "INSERT IGNORE INTO employee (EID, FName, LName, Phone_num, Email, Role) VALUES ('653589643', 'Danika', 'Butler', '5873546086', 'danika.butler@lstrealestate.com', 'Buyers Agent')";

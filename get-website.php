@@ -26,7 +26,23 @@
         . '_' . $lsting['Province'] . '_' . $lsting['Country'] . '.php';
 
         $filename =  getcwd() . '\property' . '\\' . $addr_string;
-        echo $filename;
+
+        // get all photos
+        $photos = array();
+        $pic_q = 'SELECT * FROM listing_photos AS k WHERE k.Zip_code = \'' . $lsting['Zip_code'] . '\'';
+
+        if (($result = mysqli_query($con, $pic_q)) == TRUE) {
+            while($row = mysqli_fetch_assoc($result)) {
+                $photos[] = $row;
+            }
+        } else {
+            die('Query failed: ' . mysqli_error($con));
+        }
+
+        $photostring = null;
+        foreach($photos as $ph) {
+            $photostring = $photostring . '<img src="../' . $ph['Photo'] . '">';
+        }
 
         $content = '
 <!DOCTYPE html>
@@ -53,8 +69,14 @@
     </div>
     <div class="listingdisplay-holder">
         <div class="listingdisplay-body">   
-            <div class="listingdisplay-image-holder">
-                <img src="' . $lsting['Photos'] . '" onerror="this.onerror = null; this.src = \'../images/default.jpg\'">
+            <div class="listingdisplay-image-div">
+                <div class="listingdisplay-image-left" onclick="goleft()">
+                    <img src="../project-icons/leftarrow.png">
+                </div>
+                <div class="listingdisplay-image-holder" data-currindex=0>' . $photostring . '</div>
+                <div class="listingdisplay-image-right" onclick="goright()">
+                    <img src="../project-icons/rightarrow.png">
+                </div>
             </div>
             <div class="listingdisplay-body-header">
                 <div class="listingaddressinfo">
@@ -76,6 +98,31 @@
             </tbody></table>
         </div>
     </div>
+    <script>
+        var slideholder = document.getElementsByClassName("listingdisplay-image-holder")[0];
+        var slideindex = 0;
+        var slidelist = slideholder.getElementsByTagName("img");
+        var photocount = slidelist.length;
+        
+        // initialization
+        slidelist[0].classList.add("current");
+
+        function goright() {
+            move_slideshow(slideindex = (slideindex + 1) % photocount);
+        }
+
+        function goleft() {
+            move_slideshow(slideindex = (slideindex - 1) % photocount);
+        }
+
+        function move_slideshow(index) {
+            if (photocount == 0) return;
+            for (var slide of slidelist) {
+                slide.classList.remove("current");
+            }
+            slidelist[index].classList.add("current");
+        }
+    </script>
 </body>
 </html>        
         ';

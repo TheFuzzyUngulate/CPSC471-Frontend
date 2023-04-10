@@ -26,7 +26,7 @@
         }
 
         return $db_addrs_copy;
-    }
+   }
 
     function parse_input($raw_input) {
         $ret_array = explode(' ', $raw_input);
@@ -54,6 +54,8 @@
             die('Query failed: ' . mysqli_error($con));
         }
 
+        mysqli_close($con);
+
         // for each string in house data, compare
         return json_encode(comp_input_w_addrs($query, $listing_array));
     }
@@ -63,11 +65,29 @@
         // assume $query is a json encoded object
         $arr = json_decode($query, true);
         $result = '';
+
+        // connect to SQL server
+        $con = mysqli_connect('localhost','root','What spreads down from a tree.','pandora_real_estate');
+        // if not connecting, then kill
+	    if(!$con) {
+            die('Could not connect: '. mysqli_connect_error());
+        }
+
         foreach ($arr as $item) {
+
+            $photo = null;
+            $pic_q = 'SELECT * FROM listing_photos AS k WHERE k.Zip_code = \'' . $item['Zip_code'] . '\'';
+
+            if (($result = mysqli_query($con, $pic_q)) == TRUE) {
+                $photo = mysqli_fetch_assoc($result);
+            } else {
+                die('Query failed: ' . mysqli_error($con));
+            }
+
             echo '
                 <div class="listing-div" onclick>
                     <div class="picture-container">
-                        <img class="listing-pic" src="' . $item['Photos'] . '" onerror="this.onerror = null; this.src = \'images/default.jpg\'">
+                        <img class="listing-pic" src="' . $photo['Photo']. '" onerror="this.onerror = null; this.src = \'images/default.jpg\'">
                     </div>
                     <div class="info-container">
                         <h1 class="price-tag">$' . $item['Price'] . '</h1>
@@ -95,6 +115,8 @@
                 </div>
             '; 
         }
+
+        mysqli_close($con);
 
         echo $result;
     }

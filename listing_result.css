@@ -5,7 +5,7 @@
 .listingdisplay-holder {
     text-align: center;
     position: relative;
-    top: 50px;
+    top: 70px;
     width: 100%;
 }
 
@@ -42,15 +42,44 @@
     border-right: none;
 }
 
+.listingdisplay-image-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.listingdisplay-image-left, .listingdisplay-image-right {
+    width: 5%;
+    max-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listingdisplay-image-left > img, .listingdisplay-image-right > img {
+    width: 50%;
+}
+
 .listingdisplay-image-holder {
-    width: 100%;
+    flex-grow: 1;
     height: 450px;
     text-align: center;
     background-color: rgb(220, 220, 220);
+    width: 100%;
+}
+
+.listingdisplay-image-holder > img {
+    object-fit: contain;
 }
 
 .listingdisplay-image-holder > img {
     height: inherit;
+    display: none;
+}
+
+.listingdisplay-image-holder > img.current {
+    height: inherit;
+    width: inherit;
+    display: inline-block;
 }
 
 .listingdisplay-body-header {

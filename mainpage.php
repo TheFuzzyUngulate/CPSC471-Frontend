@@ -27,5 +27,9 @@
             <button class="main-searchbar-button" type="submit"></button>
         </form>
     </div>
+    <?php 
+        include 'database.php';
+        include 'initial_data.php';
+    ?>
 </body>
 </html>
