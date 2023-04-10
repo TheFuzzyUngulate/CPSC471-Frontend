@@ -110,7 +110,7 @@
 		
 		//Listing
 		$listing1 = "INSERT IGNORE INTO listing (Zip_code, House_num, Street, City, Province, Country, Price, Num_of_bedrooms, Num_of_half_bathrooms, Num_of_full_bathrooms, Square_footage, Type, Front_facing, Community, Heating, Fireplace_type, Attached_Detached_garage, Garage_capacity, LAgent_ID, Add_date)
-		 VALUES ('A2B3C1', 471, 'Database Street NE', 'Vancouver', 'British Colombia', 'Canada', 123456.00, 2, 1, 2, 2500, 'Single-Family', 'N', 'Database', 'Natural gas central', 'Electric', 'Detached', 2, '123456789', '2023-03-25')";
+		 VALUES ('A2B3C1', 471, 'Database Street NE', 'Vancouver', 'BC', 'Canada', 123456.00, 2, 1, 2, 2500, 'Single-Family', 'N', 'Database', 'Natural gas central', 'Electric', 'Detached', 2, '123456789', '2023-03-25')";
 		if(!mysqli_query($con_id,$listing1)) {
 			die('Error: ' . mysqli_error($con_id));
 		} else {
@@ -118,7 +118,7 @@
 		}
 		
 		$listing2 = "INSERT IGNORE INTO listing (Zip_code, House_num, Street, City, Province, Country, Price, Num_of_bedrooms, Num_of_half_bathrooms, Num_of_full_bathrooms, Square_footage, Type, Front_facing, Community, Heating, Fireplace_type, Attached_Detached_garage, Garage_capacity, LAgent_ID, Add_date)
-		 VALUES ('B3C5A2', 231, 'Southern Lane SW', 'Calgary', 'Alberta', 'Canada', 92000.00, 1, 0, 1, 450, 'Apartment', 'N', 'Southern Hills', 'Natural gas forced', 'Electric', 'Detached', 1, '123456789', '2023-03-28')";
+		 VALUES ('B3C5A2', 231, 'Southern Lane SW', 'Calgary', 'AB', 'Canada', 92000.00, 1, 0, 1, 450, 'Apartment', 'N', 'Southern Hills', 'Natural gas forced', 'Electric', 'Detached', 1, '123456789', '2023-03-28')";
 		if(!mysqli_query($con_id,$listing2)) {
 			die('Error: ' . mysqli_error($con_id));
 		} else {
@@ -126,7 +126,7 @@
 		}
 		
 		$listing3 = "INSERT IGNORE INTO listing (Zip_code, House_num, Street, City, Province, Country, Price, Num_of_bedrooms, Num_of_half_bathrooms, Num_of_full_bathrooms, Square_footage, Type, Front_facing, Community, Heating, Fireplace_type, Attached_Detached_garage, Garage_capacity, LAgent_ID, Add_date)
-		 VALUES ('C5A1B3', 675, 'Amazon Drive NE', 'Calgary', 'Alberta', 'Canada', 675864.00, 3, 1, 2, 3000, 'Single-Family', 'W', 'Amazon Rivers', 'Natural gas central', 'Gas', 'Attached', 2, '214365978', '2023-04-02')";
+		 VALUES ('C5A1B3', 675, 'Amazon Drive NE', 'Calgary', 'AB', 'Canada', 675864.00, 3, 1, 2, 3000, 'Single-Family', 'W', 'Amazon Rivers', 'Natural gas central', 'Gas', 'Attached', 2, '214365978', '2023-04-02')";
 		if(!mysqli_query($con_id,$listing3)) {
 			die('Error: ' . mysqli_error($con_id));
 		} else {
