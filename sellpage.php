@@ -11,7 +11,7 @@
 	//NOTE: Need to enter your web server password in 3rd argument for mysqli_connect()
 	//in order to connect to mysql database. Intructions for downloading 'appserv' which
 	//is a compatible web server with PHP and MySQL are in the PHP document on D2L
-	/* $con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.');
+	/* $con = mysqli_connect('localhost', 'root', '');
 
 	if(!$con) {
 		echo 'Connection did not work...';
@@ -24,12 +24,22 @@
                   && preg_match("/^[0-9]+$/", $_POST['Halfbaths']) 
                   && preg_match("/^[0-9]+$/", $_POST['Bedrooms']) 
                   && $_POST['FirstName'] && $_POST['EmailAddress'] 
-                  && $_POST['Address'] && ($_POST['HomeType'] != "") 
-                  && $_POST['Description'];
-    if ($validInput) {echo "Form submitted successfully";
+                  && preg_match("/^[0-9]+$/", $_POST['HouseNumber'])
+		  && preg_match("/^[0-9]+$/", $_POST['SquareFootage'])
+		  && $_POST['HouseRoad'] && $_POST['FlooringTypes']
+		  && $_POST['HouseCity'] && $_POST['HouseProvince']
+		  && $_POST['HouseCountry'] && $_POST['HousePostalCode']
+		  && ($_POST['HomeType'] != "") 
+		  && ($_POST['FireplaceType'] != "")
+	 	  && ($_POST['IsFrontFacing'] != "")
+		  && ($_POST['HasHeating'] != "")
+                  && $_POST['HouseCommunity'] && $_POST['NearbyRecreation']
+		  && $_POST['NearbyTransportation'] && $_POST['NearbySchools']
+		  && $_POST['Description'];
+    if ($validInput) {$_POST['formErrorMessage']="Form submitted successfully";
           // php comment: Put code to interact with Database here 
         }
-    else {echo "The form did not submit because there were errors. Please try again.";}
+    else {$_POST['formErrorMessage']="The form did not submit because there were errors. Please try again.";}
   }
 ?>
     <div class="primary-header">
@@ -78,11 +88,33 @@
       <input id="PhoneNumber" name="PhoneNumber" maxlength="200" type="num">
     </div>
   </fieldset>
-    <fieldset>
+    <fieldset>Address
     <div class="field-wrapper error">
-      <label>Address*</label>
-      <input id="Address" name="Address" type="text" class="required error" placeholder="Address of your listing">
+      <label>House No.*</label>
+      <input id="HouseNumber" name="HouseNumber" type="text" class="required error" placeholder="Address of your listing">
     </div>
+    <div class="field-wrapper error">
+      <label>Road*</label>
+      <input id="HouseRoad" name="HouseRoad" type="text" class="required error" placeholder="Address of your listing">
+    </div>
+    <div class="field-wrapper error">
+      <label>City*</label>
+      <input id="HouseCity" name="HouseCity" type="text" class="required error" placeholder="Address of your listing">
+    </div>
+    <div class="field-wrapper error">
+      <label>Province*</label>
+      <input id="HouseProvince" name="HouseProvince" type="text" class="required error" placeholder="Address of your listing">
+    </div>
+    <div class="field-wrapper error">
+      <label>Country*</label>
+      <input id="HouseCountry" name="HouseCountry" type="text" class="required error" placeholder="Address of your listing">
+    </div>
+    <div class="field-wrapper error">
+      <label>Postal Code*</label>
+      <input id="HousePostalCode" name="HousePostalCode" type="text" class="required error" placeholder="Address of your listing">
+    </div>
+  </fieldset>
+  <fieldset>
     <div class="field-wrapper full select">
       <label>Home Type*</label>
       <select class="required" name="HomeType" id="HomeType">
@@ -103,6 +135,57 @@
       <label>No. of Bedrooms*</label>
       <input id="Bedrooms" name="Bedrooms" maxlength="4" type="num" class="required error">
     </div>
+    <div class="field-wrapper error">
+      <label>Sq. Footage*</label>
+      <input id="SquareFootage" name="SquareFootage" maxlength="5" type="num" class="required error">
+    </div>
+    <div class="field-wrapper error">
+      <label>Flooring types*</label>
+      <input id="FlooringTypes" name="FlooringTypes" type="text" maxlength="2000" class="required error" placeholder="Separate items with commas">
+    </div>
+    <div class="field-wrapper full select">
+      <label>Fireplace Type*</label>
+      <select class="required" name="FireplaceType" id="FireplaceType">
+      <option value="">Select one...</option>
+      <option value="NA">N/A</option>
+      <option value="Gas">Gas-burning</option>
+      <option value="Wood">Wood-burning</option>
+    </select>
+    </div>
+    <div class="field-wrapper full select">
+      <label>Front Facing?*</label>
+      <select class="required" name="IsFrontFacing" id="IsFrontFacing">
+      <option value="">Select one...</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    </div>
+    <div class="field-wrapper full select">
+      <label>Indoor Heating?*</label>
+      <select class="required" name="HasHeating" id="HasHeating">
+      <option value="">Select one...</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="field-wrapper error">
+      <label>Community*</label>
+      <input id="HouseCommunity" name="HouseCommunity" maxlength="200" type="text" class="required error" placeholder="Community your listing is in">
+    </div>
+    <div class="field-wrapper error">
+      <label>Nearby Recreations*</label>
+      <input id="NearbyRecreation" name="NearbyRecreation" maxlength="2000" type="text" class="required error" placeholder="Separate items with commas">
+    </div>
+    <div class="field-wrapper error">
+      <label>Nearby Public Transportations*</label>
+      <input id="NearbyTransportation" name="NearbyTransportation" maxlength="2000" type="text" class="required error" placeholder="Separate items with commas">
+    </div>
+    <div class="field-wrapper error">
+      <label>Nearby Schools*</label>
+      <input id="NearbySchools" name="NearbySchools" maxlength="2000" type="text" class="required error" placeholder="Separate items with commas">
+    </div>
   </fieldset>
   <fieldset>
     <div class="field-wrapper error">
@@ -119,7 +202,7 @@
       <label>Listing Agent*</label>
       <select name="lagents" id="lagents">
         <?php
-          	$con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.', 'pandora_real_estate');
+          	$con = mysqli_connect('localhost', 'root', 'tHisistheendd!!!&1', 'pandora_real_estate');
 
             if(!$con) {
               echo 'Connection did not work...';
@@ -138,7 +221,7 @@
       </select>
     </div>
   </fieldset>
-    <div class="error-warning">
+    <div class="error-warning"><?php echo $_POST['formErrorMessage'] ?>
     </div>
   <button type="submit" class="submit">Submit</button>
 </form>
