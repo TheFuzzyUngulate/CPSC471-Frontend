@@ -92,8 +92,8 @@
             </div>
             <table><tbody>
                 <td>' . $lsting['Num_of_bedrooms'] . ' bedroom</td>
-                <td>' . $lsting['Num_of_bedrooms'] . ' sq. feet</td>
-                <td>' . $lsting['Square_footage'] . ' bathrooms</td>
+                <td>' . $lsting['Square_footage'] . ' sq. feet</td>
+                <td>' . $lsting['Num_of_bedrooms'] . ' bathrooms</td>
                 <td>' . $lsting['Num_of_full_bathrooms'] . ' bathrooms</td>
             </tbody></table>
         </div>
