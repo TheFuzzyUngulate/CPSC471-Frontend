@@ -60,10 +60,16 @@ button:hover {
     margin-left: 10px;
 }
 
+.center-img {
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    }
+
 .searchbarbox {
     width: 100%; 
     height: 100%;
-    display: flex;
+
     justify-content: center;
     align-items: center;
     text-align: center;

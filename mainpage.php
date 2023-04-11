@@ -21,14 +21,19 @@
             </div>
         </nav>
     </div>
+    
 	
-	<!-- home image: https://stock.adobe.com/ca/search/images?k=housing+cartoon -->
-	
-    <div class="searchbarbox">
-        <form id="mainpage-searchbar-form" class="searchbar" action="searchpage.php">
-            <input type="text" class="main-searchbar-input" placeholder="search listings..." name="q">
-            <button class="main-searchbar-button" type="submit"></button>
-        </form>
+    </div>
+    <div class ="searchbarbox">
+	<div class="center-img">
+	    <img src="./images/home.jpg" alt="home logo">
+        </div>
+        <div class="searchbarbox">
+            <form id="mainpage-searchbar-form" class="searchbar" action="searchpage.php">
+            	<input type="text" class="main-searchbar-input" placeholder="search listings..." name="q">
+            	<button class="main-searchbar-button" type="submit"></button>
+            </form>
+        </div>
     </div>
 	<?php 
         //include 'database.php';
