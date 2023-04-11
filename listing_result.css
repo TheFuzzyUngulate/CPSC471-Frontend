@@ -1,0 +1,114 @@
+.grid-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.listingdisplay-holder {
+    text-align: center;
+    position: relative;
+    top: 70px;
+    width: 100%;
+}
+
+.listingdisplay-body {
+    display: inline-block;
+    width: 70%;
+}
+
+.listingdisplay-body > table {
+    width: 100%;
+    border-top: 1px solid rgb(180, 180, 180);
+    border-bottom: 1px solid rgb(180, 180, 180);
+    border-collapse: collapse;
+}
+
+.listingdisplay-body > table > tbody {
+    padding: 10px;
+}
+
+.listingdisplay-body > table td {
+    border-left: 1px solid rgb(180, 180, 180);
+    border-right: 1px solid rgb(180, 180, 180);
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.listingdisplay-body > table td:first-child {
+    border-left: none;
+    border-right: none;
+}
+
+.listingdisplay-body > table td:last-child {
+    border-left: none;
+    border-right: none;
+}
+
+.listingdisplay-image-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.listingdisplay-image-left, .listingdisplay-image-right {
+    width: 5%;
+    max-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listingdisplay-image-left > img, .listingdisplay-image-right > img {
+    width: 50%;
+}
+
+.listingdisplay-image-holder {
+	flex-grow: 1;
+    height: 450px;
+    text-align: center;
+    background-color: rgb(220, 220, 220);
+	width: 100%;
+}
+
+.listingdisplay-image-holder > img {
+    object-fit: contain;
+}
+
+.listingdisplay-image-holder > img {
+    height: inherit;
+	display: none;
+}
+
+.listingdisplay-image-holder > img.current {
+    height: inherit;
+    width: inherit;
+    display: inline-block;
+}
+
+.listingdisplay-body-header {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    padding: 10px;
+}
+
+.listingdisplay-body-header > .listingaddressinfo {
+    width: 80%;
+}
+
+.listingdisplay-body-header > .listingbuybutton {
+    width: 20%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.listingdisplay-body-header > .listingbuybutton > button {
+    display: block;
+    width: 30%;
+    margin: auto;
+}
+
+.listingdisplay-body-info-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
