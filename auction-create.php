@@ -39,6 +39,18 @@
 		<input type="submit">
 	</form>
 	
+	<p>--------------------------------------------------------------------------</p>
+	
+	<h1>CHECK HIGHEST BID</h1>
+	<p>Insert the information in the following fields.</p>
+	
+	<form method='post' action='auction-create.php'>
+		Zipcode of listing: <input type="text" name="zipcode_check"><br>
+		Name of Auction: <input type="text" name="auction_name_check"><br>
+		
+		<input type="submit">
+	</form>
+	
 <?php
 	error_reporting(E_ALL);
 	ini_set("display_errors", 1);
@@ -71,6 +83,24 @@
 	
 	echo "You have created an auction";
 	
+	} else if(isset($_POST["zipcode_check"])) {
+		$zipcode_check = $_POST["zipcode_check"];
+		$auction_name_check = $_POST["auction_name_check"];
+		
+		//auction biddings
+		$max1 = "SELECT MAX(A.Amount) AS Max_amount
+				FROM auction_biddings AS A
+				WHERE A.Zip_code='" . $zipcode_check ."' AND A.Auction_name='" . $auction_name_check ."'";
+		
+		if(($result = mysqli_query($con,$max1)) == TRUE) {
+			$row = mysqli_fetch_assoc($result);
+			//echo $row["Name"];
+			$auction_max = $row["Max_amount"];
+			echo "The current maximum bid is ";
+			echo $auction_max;
+		} else {
+			die('Error: ' . mysqli_error($con));
+		}
 	}
 	
 	mysqli_close($con);
