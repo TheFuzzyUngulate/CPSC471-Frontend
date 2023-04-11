@@ -26,17 +26,24 @@
                   && $_POST['FirstName'] && $_POST['EmailAddress'] 
                   && preg_match("/^[0-9]+$/", $_POST['HouseNumber'])
 		  && preg_match("/^[0-9]+$/", $_POST['SquareFootage'])
+		  && preg_match("/^[0-9]+$/", $_POST['GarageCapacity'])
 		  && $_POST['HouseRoad'] && $_POST['FlooringTypes']
 		  && $_POST['HouseCity'] && $_POST['HouseProvince']
 		  && $_POST['HouseCountry'] && $_POST['HousePostalCode']
 		  && ($_POST['HomeType'] != "") 
 		  && ($_POST['FireplaceType'] != "")
+		  && ($_POST['GarageType'] != "")
 	 	  && ($_POST['IsFrontFacing'] != "")
 		  && ($_POST['HasHeating'] != "")
                   && $_POST['HouseCommunity'] && $_POST['NearbyRecreation']
 		  && $_POST['NearbyTransportation'] && $_POST['NearbySchools']
 		  && $_POST['Description'];
-    if ($validInput) {$_POST['formErrorMessage']="Form submitted successfully";
+    if ($_POST['HomeType'] === "MF") {$multifloorValid = $_POST['FloorCount'] && $_POST['HasWalkoutBasement']
+							 && $_POST['HasFinishedBasement'] && $_POST['HasBonusRoom']
+							 && $_POST['RoofType'];
+					}
+    else {$multifloorValid = $validInput;}
+    if ($validInput && $multifloorValid) {$_POST['formErrorMessage']="Form submitted successfully";
           // php comment: Put code to interact with Database here 
         }
     else {$_POST['formErrorMessage']="The form did not submit because there were errors. Please try again.";}
@@ -153,6 +160,19 @@
     </select>
     </div>
     <div class="field-wrapper full select">
+      <label>Garage Type*</label>
+      <select class="required" name="GarageType" id="GarageType">
+      <option value="">Select one...</option>
+      <option value="NA">N/A</option>
+      <option value="Gas">Attached</option>
+      <option value="Wood">Detached</option>
+    </select>
+    </div>
+    <div class="field-wrapper error">
+      <label>Garage Capacity*</label>
+      <input id="GarageCapacity" name="GarageCapacity" type="num" maxlength="3" class="required error" placeholder="">
+    </div>
+    <div class="field-wrapper full select">
       <label>Front Facing?*</label>
       <select class="required" name="IsFrontFacing" id="IsFrontFacing">
       <option value="">Select one...</option>
@@ -167,6 +187,40 @@
       <option value="Yes">Yes</option>
       <option value="No">No</option>
     </select>
+    </div>
+  </fieldset>
+  <fieldset>**Only fill if home is Multi-floor**
+    <div class="field-wrapper error">
+      <label>No. of floors*</label>
+      <input id="FloorCount" name="FloorCount" maxlength="4" type="num" class="required error" placeholder="">
+    </div>
+    <div class="field-wrapper full select">
+      <label>Walkout Basement?*</label>
+      <select class="required" name="HasWalkoutBasement" id="HasWalkoutBasement">
+      <option value="">Select one...</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    </div>
+    <div class="field-wrapper full select">
+      <label>Finished Basement?*</label>
+      <select class="required" name="HasFinishedBasement" id="HasFinishedBasement">
+      <option value="">Select one...</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    </div>
+    <div class="field-wrapper full select">
+      <label>Bonus Room?*</label>
+      <select class="required" name="HasBonusRoom" id="HasBonusRoom">
+      <option value="">Select one...</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    </div>
+    <div class="field-wrapper error">
+      <label>Roof Type*</label>
+      <input id="RoofType" name="RoofType" maxlength="200" type="text" class="required error" placeholder="">
     </div>
   </fieldset>
   <fieldset>
