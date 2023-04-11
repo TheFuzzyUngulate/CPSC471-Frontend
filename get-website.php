@@ -91,10 +91,10 @@
                 </form>
             </div>
             <table><tbody>
-                <td>' . $lsting['Num_of_bedrooms'] . ' bedroom</td>
+                <td>' . $lsting['Num_of_bedrooms'] . ' bedrooms</td>
                 <td>' . $lsting['Square_footage'] . ' sq. feet</td>
-                <td>' . $lsting['Num_of_bedrooms'] . ' bathrooms</td>
-                <td>' . $lsting['Num_of_full_bathrooms'] . ' bathrooms</td>
+                <td>' . $lsting['Num_of_full_bathrooms'] . ' full bathrooms</td>
+                <td>' . $lsting['Num_of_half_bathrooms'] . ' half bathrooms</td>
             </tbody></table>
         </div>
     </div>
