@@ -37,10 +37,9 @@
                     <h1>$92000.00</h1>
                     <p>231 Southern Lane SW<br>Calgary, AB, Canada; B3C5A2</p>
                 </div>
-                <form class="listingbuybutton" action="">
-                    <input type="hidden" name="json-value" value= "">
-                    <button type="submit">buy listing</button>
-                </form>
+                <div class="listingbuybutton">
+                    <button type="submit" onclick="create_popup()">buy listing</button>
+                </div>
             </div>
             <table><tbody>
                 <td>1 bedroom</td>
@@ -48,6 +47,19 @@
                 <td>450 bathrooms</td>
                 <td>1 bathrooms</td>
             </tbody></table>
+        </div>
+        <div class="email-asking-popup-div">
+            <div class="close-icon-holder">
+                <button onclick="hide_popup()"><img src="../project-icons/x_icon.png"></button>
+            </div>
+            <form class="listingbuybutton" action="../get-website.php" id="emailpopup" method="POST">
+                <label for="email">Email:</label>
+                <input type="text" name="email"><br>
+                <label for="amount">Amount:</label>
+                <input type="text" name="amount">
+                <input type="hidden" name="zipcode" value= "B3C5A2">
+                <div class="submit-holder"><button type="submit">submit email</button></div>
+            </form>
         </div>
     </div>
     <script>
@@ -73,6 +85,16 @@
                 slide.classList.remove("current");
             }
             slidelist[index].classList.add("current");
+        }
+
+        function create_popup() {
+            var pop = document.getElementsByClassName("email-asking-popup-div")[0];
+            pop.style.visibility = "visible";
+        }
+
+        function hide_popup() {
+            var pop = document.getElementsByClassName("email-asking-popup-div")[0];
+            pop.style.visibility = "hidden";
         }
     </script>
 </body>

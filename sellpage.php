@@ -29,7 +29,7 @@
 		  && preg_match("/^[0-9]+$/", $_POST['GarageCapacity'])
 		  && $_POST['HouseRoad'] && $_POST['FlooringTypes']
 		  && $_POST['HouseCity'] && $_POST['HouseProvince']
-		  && $_POST['HouseCountry'] && $_POST['HouseZIPCode']
+		  && $_POST['HouseCountry'] && $_POST['HousePostalCode']
 		  && ($_POST['HomeType'] != "") 
 		  && ($_POST['FireplaceType'] != "")
 		  && ($_POST['GarageType'] != "")
@@ -69,7 +69,7 @@
     
     <!-- Following code largely adapted from https://codepen.io/andmiriam/pen/YweYQP -->
     <div class="multi-field-form-modal border">
-  <button class="btn-close-modal"></button>
+  <button aria-label="Close Account Info Modal Box" class="btn-close-modal">&times;</button>
   <div class="form-description">
     <h2>Please enter your details and the details of your listing:</h2>
   </div>
@@ -117,8 +117,8 @@
       <input id="HouseCountry" name="HouseCountry" type="text" class="required error" placeholder="Address of your listing">
     </div>
     <div class="field-wrapper error">
-      <label>ZIP Code*</label>
-      <input id="HouseZIPCode" name="HouseZIPCode" type="text" class="required error" placeholder="Address of your listing">
+      <label>Postal Code*</label>
+      <input id="HousePostalCode" name="HousePostalCode" type="text" class="required error" placeholder="Address of your listing">
     </div>
   </fieldset>
   <fieldset>

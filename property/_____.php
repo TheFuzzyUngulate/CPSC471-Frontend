@@ -27,25 +27,25 @@
                 <div class="listingdisplay-image-left" onclick="goleft()">
                     <img src="../project-icons/leftarrow.png">
                 </div>
-                <div class="listingdisplay-image-holder" data-currindex=0><img src="../images/471 Database Street - 1.jpg"><img src="../images/471 Database Street - 2.jpg"><img src="../images/471 Database Street - 3.jpg"><img src="../images/471 Database Street - 4.jpg"><img src="../images/471 Database Street - 5.jpg"><img src="../images/471 Database Street - 6.jpg"></div>
+                <div class="listingdisplay-image-holder" data-currindex=0></div>
                 <div class="listingdisplay-image-right" onclick="goright()">
                     <img src="../project-icons/rightarrow.png">
                 </div>
             </div>
             <div class="listingdisplay-body-header">
                 <div class="listingaddressinfo">
-                    <h1>$123456.00</h1>
-                    <p>471 Database Street NE<br>Vancouver, BC, Canada; A2B3C1</p>
+                    <h1>$</h1>
+                    <p> <br>, , ; </p>
                 </div>
                 <div class="listingbuybutton">
                     <button type="submit" onclick="create_popup()">buy listing</button>
                 </div>
             </div>
             <table><tbody>
-                <td>2 bedroom</td>
-                <td>2 sq. feet</td>
-                <td>2500 bathrooms</td>
-                <td>2 bathrooms</td>
+                <td> bedroom</td>
+                <td> sq. feet</td>
+                <td> bathrooms</td>
+                <td> bathrooms</td>
             </tbody></table>
         </div>
         <div class="email-asking-popup-div">
@@ -57,7 +57,7 @@
                 <input type="text" name="email"><br>
                 <label for="amount">Amount:</label>
                 <input type="text" name="amount">
-                <input type="hidden" name="zipcode" value= "A2B3C1">
+                <input type="hidden" name="zipcode" value= "">
                 <div class="submit-holder"><button type="submit">submit email</button></div>
             </form>
         </div>
