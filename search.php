@@ -78,7 +78,7 @@
             $photo = null;
             $pic_q = 'SELECT * FROM listing_photos AS k WHERE k.Zip_code = \'' . $item['Zip_code'] . '\'';
 
-            if (($result = mysqli_query($con, $pic_q)) == TRUE) {
+            if ($result = mysqli_query($con, $pic_q)) {
                 $photo = mysqli_fetch_assoc($result);
             } else {
                 die('Query failed: ' . mysqli_error($con));
@@ -117,7 +117,5 @@
         }
 
         mysqli_close($con);
-
-        echo $result;
     }
 ?>

@@ -11,12 +11,26 @@
 	//NOTE: Need to enter your web server password in 3rd argument for mysqli_connect()
 	//in order to connect to mysql database. Intructions for downloading 'appserv' which
 	//is a compatible web server with PHP and MySQL are in the PHP document on D2L
-	$con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.');
+	/* $con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.');
 
 	if(!$con) {
 		echo 'Connection did not work...';
 		die('Could not connect: '. mysql_error());
-	}
+	} */
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $validInput = preg_match("/^[0-9]+$/", $_POST['Price']) 
+                  && preg_match("/^[0-9]+$/", $_POST['Bathrooms']) 
+                  && preg_match("/^[0-9]+$/", $_POST['Halfbaths']) 
+                  && preg_match("/^[0-9]+$/", $_POST['Bedrooms']) 
+                  && $_POST['FirstName'] && $_POST['EmailAddress'] 
+                  && $_POST['Address'] && ($_POST['HomeType'] != "") 
+                  && $_POST['Description'];
+    if ($validInput) {echo "Form submitted successfully";
+          // php comment: Put code to interact with Database here 
+        }
+    else {echo "The form did not submit because there were errors. Please try again.";}
+  }
 ?>
     <div class="primary-header">
         <nav class="grid-container">
@@ -42,7 +56,7 @@
   <div class="form-description">
     <h2>Please enter your details and the details of your listing:</h2>
   </div>
-  <form class="multi-field" method ="POST" accept-charset="utf-8">
+  <form class="multi-field" method ="POST" accept-charset="utf-8" action="./sellpage.php">
     <legend>Please note all home details are required. If your home does not include something, please enter 0.</legend>
   <fieldset>
     <div class="field-wrapper error">
@@ -100,20 +114,31 @@
       <input id="Description" name="Description" type="text" class="required error" placeholder="Description of your home">
     </div>
   </fieldset>
+  <fieldset>
+    <div class="field-wrapper error">
+      <label>Listing Agent*</label>
+      <select name="lagents" id="lagents">
+        <?php
+          	$con = mysqli_connect('localhost', 'root', 'What spreads down from a tree.', 'pandora_real_estate');
+
+            if(!$con) {
+              echo 'Connection did not work...';
+              die('Could not connect: '. mysql_error());
+            }
+
+            $lagnts = array();
+            $lagnts_q = 'SELECT E.Fname as fname, E.Lname as lname, E.EID as id FROM listing_agent as L, employee as E WHERE E.EID = L.EID';
+
+            if ($result = mysqli_query($con, $lagnts_q)) {
+              while($row = mysqli_fetch_assoc($result)) {
+                echo '<option value="' . $row['id'] . '">' . $row['fname'] . ' ' . $row['lname'] . '</option>';
+              }
+            }
+        ?>
+      </select>
+    </div>
+  </fieldset>
     <div class="error-warning">
-	<?php 
-	    $validInput = preg_match("/^[0-9]+$/", $_POST['Price']) 
-			&& preg_match("/^[0-9]+$/", $_POST['Bathrooms']) 
-			&& preg_match("/^[0-9]+$/", $_POST['Halfbaths']) 
-			&& preg_match("/^[0-9]+$/", $_POST['Bedrooms']) 
-			&& $_POST['FirstName'] && $_POST['EmailAddress'] 
-			&& $_POST['Address'] && ($_POST['HomeType'] != "") 
-			&& $_POST['Description'];
-	    if ($validInput) {echo "Form submitted successfully";
-			      // php comment: Put code to interact with Database here 
-			     }
-	    else {echo "The form did not submit because there were errors. Please try again.";}
-	?>
     </div>
   <button type="submit" class="submit">Submit</button>
 </form>
