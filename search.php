@@ -107,8 +107,8 @@
                                 condimentum magna lacinia
                             </p>
                         </div>
-                        <form action="/get-website.php" class="listing-div-form" method="post">
-                            <input type="hidden" name="json-value" value= "' . $item['Zip_code'] . '">
+                        <form action="/get-website.php" class="listing-div-form">
+                            <input type="hidden" name="zipcode" value= "' . $item['Zip_code'] . '">
                             <input type="submit" value="See more" class="listing-div-form-submit">
                         </form>
                     </div>

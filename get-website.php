@@ -2,8 +2,8 @@
 	error_reporting(E_ALL);
 	ini_set("display_errors", 1);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $value = $_POST['json-value'];
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        $value = $_GET['zipcode'];
         $con = mysqli_connect('localhost','root','What spreads down from a tree.','pandora_real_estate');
         // if not connecting, then kill
 	    if(!$con) {
@@ -85,17 +85,29 @@
                     . '<br>' . $lsting['City'] . ', ' . $lsting['Province'] . ', ' . $lsting['Country']
                     . '; ' . $lsting['Zip_code'] . '</p>
                 </div>
-                <form class="listingbuybutton" action="">
-                    <input type="hidden" name="json-value" value= "' . $item['Zip_code'] . '">
-                    <button type="submit">buy listing</button>
-                </form>
+                <div class="listingbuybutton">
+                    <button type="submit" onclick="create_popup()">buy listing</button>
+                </div>
             </div>
             <table><tbody>
-                <td>' . $lsting['Num_of_bedrooms'] . ' bedrooms</td>
-                <td>' . $lsting['Square_footage'] . ' sq. feet</td>
-                <td>' . $lsting['Num_of_full_bathrooms'] . ' full bathrooms</td>
-                <td>' . $lsting['Num_of_half_bathrooms'] . ' half bathrooms</td>
+                <td>' . $lsting['Num_of_bedrooms'] . ' bedroom</td>
+                <td>' . $lsting['Num_of_bedrooms'] . ' sq. feet</td>
+                <td>' . $lsting['Square_footage'] . ' bathrooms</td>
+                <td>' . $lsting['Num_of_full_bathrooms'] . ' bathrooms</td>
             </tbody></table>
+        </div>
+        <div class="email-asking-popup-div">
+            <div class="close-icon-holder">
+                <button onclick="hide_popup()"><img src="../project-icons/x_icon.png"></button>
+            </div>
+            <form class="listingbuybutton" action="../get-website.php" id="emailpopup" method="POST">
+                <label for="email">Email:</label>
+                <input type="text" name="email"><br>
+                <label for="amount">Amount:</label>
+                <input type="text" name="amount">
+                <input type="hidden" name="zipcode" value= "' . $lsting['Zip_code'] . '">
+                <div class="submit-holder"><button type="submit">submit email</button></div>
+            </form>
         </div>
     </div>
     <script>
@@ -122,6 +134,16 @@
             }
             slidelist[index].classList.add("current");
         }
+
+        function create_popup() {
+            var pop = document.getElementsByClassName("email-asking-popup-div")[0];
+            pop.style.visibility = "visible";
+        }
+
+        function hide_popup() {
+            var pop = document.getElementsByClassName("email-asking-popup-div")[0];
+            pop.style.visibility = "hidden";
+        }
     </script>
 </body>
 </html>        
@@ -134,6 +156,42 @@
         }
 
         header('Location: property\\' . $addr_string);
+    }
+
+    else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $mail = $_POST['email'];
+        $zipcode = $_POST['zipcode'];
+        $offer = $_POST['amount'];
+        $previous = $_SERVER['HTTP_REFERER'];
+
+        $con = mysqli_connect('localhost','root','What spreads down from a tree.','pandora_real_estate');
+        // if not connecting, then kill
+	    if(!$con) {
+            die('Could not connect: '. mysqli_connect_error());
+        }
+
+        // find correct auction
+        $row = null;
+        $findauct_q = 'SELECT * FROM auction as A WHERE A.Zip_code = \'' . $zipcode . '\'';
+
+        if (($result = mysqli_query($con, $findauct_q)) == TRUE) {
+            if (mysqli_num_rows($result) == 0)
+                die('<h1>No auction for this listing!</h1><p>Try again at some other time...</p>');
+            $row = mysqli_fetch_assoc($result);
+        } else {
+            die('<h1>SQL Query Failed</h1><p>Try again at some other time...</p>');
+        }
+
+        $curr_date = date("Y-m-d");
+        $curr_time = date("H:i");
+        $pic_q = "INSERT IGNORE INTO auction_biddings (Buyer_email, Zip_code, Auction_name, Amount, Date, Time) 
+		VALUES ('{$mail}', '{$zipcode}', '{$row['Name']}', '{$offer}', '{$curr_date}', '{$curr_time}')";
+
+        if (($result = mysqli_query($con, $pic_q)) == TRUE) {
+            echo "<h1>Bid placed</h1><p>Redirecting you back to page...</h1>";
+            sleep(1);
+            header("Location: {$previous}");
+        }
 
     }
 ?>
